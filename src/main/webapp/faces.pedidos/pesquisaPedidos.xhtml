@@ -1,0 +1,81 @@
+<ui:composition template="/WEB-INF/template/layout.xhtml" 
+		xmlns="http://www.w3.org/1999/xhtml"
+		xmlns:h="http://java.sun.com/jsf/html"
+		xmlns:f="http://java.sun.com/jsf/core"
+		xmlns:ui="http://java.sun.com/jsf/facelets"
+		xmlns:p="http://primefaces.org/ui">
+	
+	<ui:define name="titulo">Pesquisa de Pedidos</ui:define>
+	
+	<ui:define name="corpo">
+		<h1>Pesquisa de Pedidos</h1>
+		
+		<p:toolbar style="margin-top: 20px">
+			<p:toolbarGroup>
+					<p:commandButton value="Pesquisar"/>
+			</p:toolbarGroup>
+			
+			<p:toolbarGroup align="right">
+					<p:button value="Novo"/>
+			</p:toolbarGroup>	
+		</p:toolbar>
+		
+		<p:panelGrid columns="2" id="painel" style="width: 100%; margin-top: 20px" 
+					columnClasses="rotulo, campo">
+					
+			<p:outputLabel value="Número"/>
+			<h:panelGroup>
+				<p:inputText size="10"/>
+				a
+				<p:inputText size="10"/>
+			</h:panelGroup>
+				
+			<p:outputLabel value="Data de criação"/>
+			<h:panelGroup>
+				<p:calendar size="10" pattern="dd/MM/yyyy"/>
+				a
+				<p:calendar size="10" pattern="dd/MM/yyyy"/>
+			</h:panelGroup>
+			
+			<p:outputLabel value="Vendedor"/>
+			<p:inputText size="40" />
+			
+			<p:outputLabel value="Cliente"/>
+			<p:inputText size="40" />
+			
+			<p:outputLabel value="Status"/>
+			<p:selectManyCheckbox>
+				<f:selectItem itemLabel="Orçamento"/>
+				<f:selectItem itemLabel="Emitido"/>
+				<f:selectItem itemLabel="Cancelado"/>
+			</p:selectManyCheckbox>
+			
+		</p:panelGrid>
+		
+		<p:dataTable id="produtosTable" value="#{pesquisaProdutosBean.produtosFiltrados}" var="produto" style="margin-top: 20px" emptyMessage="Nenhum produto encontrado."
+					 rows="20" paginator="true" paginatorAlwaysVisible="false" paginatorPosition="bottom">
+			<p:column headerText="SKU">
+				<h:outputText value="123"/>
+			</p:column>
+			
+			<p:column headerText="Nome">
+				<h:outputText value="Bala de morango"/>
+			</p:column>
+		
+			<p:column headerText="Categoria">
+				<h:outputText value="Doces - Balas e chicletes"/>
+			</p:column>
+			
+			<p:column headerText="Valor Unitário">
+				<h:outputText value="R$ 1,20"/>
+			</p:column>
+		
+			<p:column headerText="Estoque">
+				<h:outputText value="5"/>
+			</p:column>
+		
+		</p:dataTable>
+		
+	</ui:define>
+
+</ui:composition>
