@@ -8,51 +8,58 @@
 	<ui:define name="titulo">Pesquisa de Produtos</ui:define>
 	
 	<ui:define name="corpo">
-		<h1>Pesquisa de Produtos</h1>
-		
-		<p:toolbar style="margin-top: 20px">
-			<p:toolbarGroup>
-					<p:commandButton value="Pesquisar"/>
-			</p:toolbarGroup>
+		<h:form>
+			<h1>Pesquisa de Produtos</h1>
 			
-			<p:toolbarGroup align="right">
-					<p:button value="Novo" outcome="/produto/cadastroProduto"/>
-			</p:toolbarGroup>	
-		</p:toolbar>
-		
-		<p:panelGrid columns="2" id="painel" style="width: 100%; margin-top: 20px" 
-					columnClasses="rotulo, campo">
-					
-			<p:outputLabel value="SKU" for="sku"/>
-			<p:inputText id="sku" size="20" maxlength="20"/>
+			<p:toolbar style="margin-top: 20px">
+				<p:toolbarGroup>
+						<p:commandButton value="Pesquisar"/>
+				</p:toolbarGroup>
 				
-			<p:outputLabel value="Nome" for="nome"/>
-			<p:inputText id="nome" size="60" maxlength="80"/>
+				<p:toolbarGroup align="right">
+						<p:button value="Novo" outcome="/produto/cadastroProduto"/>
+				</p:toolbarGroup>	
+			</p:toolbar>
 			
-		</p:panelGrid>
-		
-		<p:dataTable id="produtosTable" var="produto" style="margin-top: 20px" emptyMessage="Nenhum produto encontrado."
+			<p:panelGrid columns="2" id="painel" style="width: 100%; margin-top: 20px" 
+						columnClasses="rotulo, campo">
+						
+				<p:outputLabel value="SKU" for="sku"/>
+				<p:inputText id="sku" size="20" maxlength="20"/>
+					
+				<p:outputLabel value="Nome" for="nome"/>
+				<p:inputText id="nome" size="60" maxlength="80"/>
+				
+			</p:panelGrid>
+		</h:form>	
+		<p:dataTable id="produtosTable" value="#{pesquisaProdutosBean.produtosFiltrados}" var="produto" style="margin-top: 20px" emptyMessage="Nenhum produto encontrado."
 					 rows="20" paginator="true" paginatorAlwaysVisible="false" paginatorPosition="bottom">
-			<p:column headerText="SKU">
+					 
+			<p:column headerText="SKU" style="text-align: center; width: 80px">
 				<h:outputText value="123"/>
 			</p:column>
-			
+
 			<p:column headerText="Nome">
-				<h:outputText value="Bala de morango"/>
+				<h:outputText value="Bala de morango" />
 			</p:column>
-		
-			<p:column headerText="Categoria">
-				<h:outputText value="Doces - Balas e chicletes"/>
+
+			<p:column headerText="Categoria" style="width: 200px">
+				<h:outputText value="Doces - Balas e chicletes" />
+			</p:column>
+
+			<p:column headerText="Valor Unitário" style="text-align: right; width: 120px">
+				<h:outputText value="R$ 1,20" />
+			</p:column>
+
+			<p:column headerText="Estoque" style="text-align: center; width: 100px">
+				<h:outputText value="5" />
 			</p:column>
 			
-			<p:column headerText="Valor Unitário">
-				<h:outputText value="R$ 1,20"/>
+			<p:column style="text-align: center; width: 100px">
+				<p:button icon="ui-icon-pencil" title="Editar"/>
+				<p:commandButton icon="ui-icon-trash" title="Excluir"/>
 			</p:column>
-		
-			<p:column headerText="Estoque">
-				<h:outputText value="5"/>
-			</p:column>
-		
+
 		</p:dataTable>
 		
 	</ui:define>
