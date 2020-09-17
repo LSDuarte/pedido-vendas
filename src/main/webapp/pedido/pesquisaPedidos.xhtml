@@ -52,39 +52,44 @@
 				</p:selectManyCheckbox>
 				
 			</p:panelGrid>
+			<p:dataTable id="produtosTable"  value="#{pesquisaPedidosBean.pedidosFiltrados}" var="produto" style="margin-top: 20px" emptyMessage="Nenhum produto encontrado."
+						 rows="20" paginator="true" paginatorAlwaysVisible="false" paginatorPosition="bottom">
+				<p:column headerText="Numero">
+					<h:outputText value="12345" style="text-align: center; width: 100px"/>
+				</p:column>
+				
+				<p:column headerText="Cliente">
+					<h:outputText value="Supermercado joão das Couves"/>
+				</p:column>
+			
+				<p:column headerText="Vendedor">
+					<h:outputText value="José Júnior"/>
+				</p:column>
+				
+				<p:column headerText="Data de Criação"  style="text-align: center; width: 140px">
+					<h:outputText value="05/06/2013"/>
+				</p:column>
+				
+				<p:column headerText="Valor Total"  style="text-align: center; width: 120px">
+					<h:outputText value="R$ 1.230,44"/>
+				</p:column>
+			
+				<p:column headerText="Status" style="width: 50px">
+					<h:outputText value="Emitido"/>
+				</p:column>
+			
+				<p:column style="text-align: center; width: 100px">
+					<p:button icon="ui-icon-pencil" title="Editar"/>
+					<p:commandButton icon="ui-icon-trash" title="Excluir" oncomplete="confirmacaoExclusao.show()" />
+				</p:column>
+			</p:dataTable>
+			
+			<p:confirmDialog header="Exclusão de Produto" message="Confirma exclusão do pedido"	widgetVar="confirmacaoExclusao" >
+							
+				<p:button value="Não" onclick="confirmacaoExclusao.hide(); return false;" />
+				<p:commandButton value="Sim" oncomplete="confirmacaoExclusao.hide();" />
+			</p:confirmDialog>
 		</h:form>
-		<p:dataTable id="produtosTable"  value="#{pesquisaPedidosBean.pedidosFiltrados}" var="produto" style="margin-top: 20px" emptyMessage="Nenhum produto encontrado."
-					 rows="20" paginator="true" paginatorAlwaysVisible="false" paginatorPosition="bottom">
-			<p:column headerText="Numero">
-				<h:outputText value="12345" style="text-align: center; width: 100px"/>
-			</p:column>
-			
-			<p:column headerText="Cliente">
-				<h:outputText value="Supermercado joão das Couves"/>
-			</p:column>
-		
-			<p:column headerText="Vendedor">
-				<h:outputText value="José Júnior"/>
-			</p:column>
-			
-			<p:column headerText="Data de Criação"  style="text-align: center; width: 140px">
-				<h:outputText value="05/06/2013"/>
-			</p:column>
-			
-			<p:column headerText="Valor Total"  style="text-align: center; width: 120px">
-				<h:outputText value="R$ 1.230,44"/>
-			</p:column>
-		
-			<p:column headerText="Status" style="width: 50px">
-				<h:outputText value="Emitido"/>
-			</p:column>
-		
-			<p:column style="text-align: center; width: 100px">
-				<p:button icon="ui-icon-pencil" title="Editar"/>
-				<p:commandButton icon="ui-icon-trash" title="Excluir"/>
-			</p:column>
-		</p:dataTable>
-		
 	</ui:define>
 
 </ui:composition>

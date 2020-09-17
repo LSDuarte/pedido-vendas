@@ -86,7 +86,7 @@ h1 {
 }
 
 .produto-tabela input {
-	width: 820%; 
+	width: 860%; 
 }
 
 
@@ -109,5 +109,25 @@ h1 {
 }
 
 /* Customiza TabView - Fim */
+
+
+/* Menu sistema inicio*/
+.menu-sistema {
+	border: 0px !important;
+	padding: 0px !important;
+	background: none !important;
+}
+
+.menu-sistema .ui-menu-parent > a .ui-menuitem-text, .menu-sistema > .ui-menu-list > .ui-menuitem > a > .ui-menuitem-text {
+	color: #ffffff !important;
+}
+
+.menu-sistema .ui-icon-triagle-1-s {
+	color: #ffffff !important;
+}
+/* Menu sistema fim*/
+
+
+
 
 

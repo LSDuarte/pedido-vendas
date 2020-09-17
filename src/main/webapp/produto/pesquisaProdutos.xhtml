@@ -31,37 +31,43 @@
 				<p:inputText id="nome" size="60" maxlength="80"/>
 				
 			</p:panelGrid>
-		</h:form>	
-		<p:dataTable id="produtosTable" value="#{pesquisaProdutosBean.produtosFiltrados}" var="produto" style="margin-top: 20px" emptyMessage="Nenhum produto encontrado."
-					 rows="20" paginator="true" paginatorAlwaysVisible="false" paginatorPosition="bottom">
-					 
-			<p:column headerText="SKU" style="text-align: center; width: 80px">
-				<h:outputText value="123"/>
-			</p:column>
-
-			<p:column headerText="Nome">
-				<h:outputText value="Bala de morango" />
-			</p:column>
-
-			<p:column headerText="Categoria" style="width: 200px">
-				<h:outputText value="Doces - Balas e chicletes" />
-			</p:column>
-
-			<p:column headerText="Valor Unitário" style="text-align: right; width: 120px">
-				<h:outputText value="R$ 1,20" />
-			</p:column>
-
-			<p:column headerText="Estoque" style="text-align: center; width: 100px">
-				<h:outputText value="5" />
-			</p:column>
+			<p:dataTable id="produtosTable" value="#{pesquisaProdutosBean.produtosFiltrados}" var="produto" style="margin-top: 20px" emptyMessage="Nenhum produto encontrado."
+						 rows="20" paginator="true" paginatorAlwaysVisible="false" paginatorPosition="bottom">
+						 
+				<p:column headerText="SKU" style="text-align: center; width: 80px">
+					<h:outputText value="123"/>
+				</p:column>
+	
+				<p:column headerText="Nome">
+					<h:outputText value="Bala de morango" />
+				</p:column>
+	
+				<p:column headerText="Categoria" style="width: 200px">
+					<h:outputText value="Doces - Balas e chicletes" />
+				</p:column>
+	
+				<p:column headerText="Valor Unitário" style="text-align: right; width: 120px">
+					<h:outputText value="R$ 1,20" />
+				</p:column>
+	
+				<p:column headerText="Estoque" style="text-align: center; width: 100px">
+					<h:outputText value="5" />
+				</p:column>
+				
+				<p:column style="text-align: center; width: 100px">
+					<p:button icon="ui-icon-pencil" title="Editar"/>
+					<p:commandButton icon="ui-icon-trash" title="Excluir" oncomplete="confirmacaoExclusao.show()" />
+				</p:column>
+				
+			</p:dataTable>
 			
-			<p:column style="text-align: center; width: 100px">
-				<p:button icon="ui-icon-pencil" title="Editar"/>
-				<p:commandButton icon="ui-icon-trash" title="Excluir"/>
-			</p:column>
-
-		</p:dataTable>
-		
+			<p:confirmDialog header="Exclusão de Produto" message="Confirma exclusão do produto?"	
+							widgetVar="confirmacaoExclusao">
+							
+				<p:button value="Não" onclick="confirmacaoExclusao.hide(); return false;" />
+				<p:commandButton value="Sim" oncomplete="confirmacaoExclusao.hide();" type="button"/>
+			</p:confirmDialog>
+		</h:form>	
 	</ui:define>
 
 </ui:composition>
